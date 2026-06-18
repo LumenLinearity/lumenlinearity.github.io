@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Systems & Cognitive Architecture Hub</title>
-    <!-- Tailwind CSS Runtime Core Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inject Atkinson Hyperlegible Font Stack Natively -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -17,32 +15,27 @@
             color: #ebdbb2; 
             font-family: 'Atkinson Hyperlegible', sans-serif; 
         }
-        /* Hidden state utility for seamless tab swapping */
         .tab-content { display: none; }
         .tab-content.active { display: block; }
     </style>
 </head>
 <body class="flex flex-col min-h-screen p-6 md:p-12 max-w-5xl mx-auto">
 
-    <!-- NAVIGATION HEADER -->
     <header class="border-b border-stone-700 pb-6 mb-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
             <h1 class="text-2xl font-bold tracking-tight text-[#b8bb26]">// CORE_MASTERY_HUB</h1>
             <p class="text-sm text-stone-400 mt-0.5">Systems Architecture & Cognitive Frameworks</p>
         </div>
         
-        <!-- Right-Aligned Navigation Tabs -->
         <nav class="flex space-x-2 sm:self-center w-full sm:w-auto overflow-x-auto">
-            <button onclick="switchTab('learning')" id="btn-learning" class="tab-btn px-4 py-2 text-sm font-bold bg-stone-800 border border-stone-700 rounded text-[#fabd2f] hover:bg-stone-700 transition-colors">01. Learning</button>
+            <button onclick="switchTab('learning')" id="btn-learning" class="tab-btn px-4 py-2 text-sm font-bold bg-stone-800 border border-stone-700 rounded text-[#fabd2f] transition-colors">01. Learning</button>
             <button onclick="switchTab('psychology')" id="btn-psychology" class="tab-btn px-4 py-2 text-sm font-bold bg-transparent border border-transparent rounded text-stone-400 hover:text-[#ebdbb2] transition-colors">02. Self-Psych</button>
             <button onclick="switchTab('support')" id="btn-support" class="tab-btn px-4 py-2 text-sm font-bold bg-transparent border border-transparent rounded text-stone-400 hover:text-[#ebdbb2] transition-colors">03. Support</button>
         </nav>
     </header>
 
-    <!-- CONTENT MATRIX CORE -->
     <main class="flex-grow">
         
-        <!-- TAB 1: ACCELERATED LEARNING -->
         <section id="tab-learning" class="tab-content active space-y-6">
             <div class="border border-stone-700 p-6 rounded bg-stone-900/30">
                 <h2 class="text-xl font-bold text-[#fabd2f] mb-3">Accelerated Learning Engine</h2>
@@ -50,19 +43,8 @@
                     Deploying data-driven knowledge acquisition protocols. This operational branch focuses on tracking semantic retention curves via deliberate retrieval loops, high-density interleaving schedules, and complete structural breakdown mapping before project initiation.
                 </p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                <div class="p-4 border border-stone-800 bg-stone-900/10 rounded">
-                    <strong class="text-[#8ec07c] block mb-1">Deliberate Interleaving</strong>
-                    Alternating related computational skills to build rapid adaptive problem-solving mechanics.
-                </div>
-                <div class="p-4 border border-stone-800 bg-stone-900/10 rounded">
-                    <strong class="text-[#8ec07c] block mb-1">Active Retrieval</strong>
-                    Replacing passive review passes with algorithmic extraction triggers to minimize time-to-retention.
-                </div>
-            </div>
         </section>
 
-        <!-- TAB 2: SELF PSYCHOLOGY -->
         <section id="tab-psychology" class="tab-content space-y-6">
             <div class="border border-stone-700 p-6 rounded bg-stone-900/30">
                 <h2 class="text-xl font-bold text-[#fe8019] mb-3">Self-Psychology & Logic Frameworks</h2>
@@ -72,7 +54,6 @@
             </div>
         </section>
 
-        <!-- TAB 3: SUPPORTIVE PSYCHOLOGY -->
         <section id="tab-support" class="tab-content space-y-6">
             <div class="border border-stone-700 p-6 rounded bg-stone-900/30">
                 <h2 class="text-xl font-bold text-[#83a598] mb-3">Supportive & Tactical Psychology</h2>
@@ -84,17 +65,35 @@
 
     </main>
 
-    <!-- RIGHT-ALIGNED COPYRIGHT & STATUS FOOTER BAR -->
     <footer class="border-t border-stone-700 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-stone-500 gap-2">
         <div>
             Status: <span class="text-[#b8bb26] font-bold">● Operational Baseline Locked</span>
         </div>
-        <div class="text-stone-400 font-mono tracking-wider">
+        <div class="text-stone-400 font-mono tracking-wider sm:text-right w-full sm:w-auto">
             &copy; 2026 Lucian. All Rights Reserved. Engineered for Academic Portfolio Assessment.
         </div>
     </footer>
 
-    <!-- LINK INTERACTION LOGIC FILE -->
-    <script src="js/app.js"></script>
+    <script>
+        function switchTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-btn');
+            
+            contents.forEach(content => content.classList.remove('active'));
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-stone-800', 'border-stone-700', 'text-[#fabd2f]');
+                btn.classList.add('bg-transparent', 'border-transparent', 'text-stone-400');
+            });
+            
+            const targetContent = document.getElementById(`tab-${tabId}`);
+            const targetButton = document.getElementById(`btn-${tabId}`);
+            
+            if (targetContent && targetButton) {
+                targetContent.classList.add('active');
+                targetButton.classList.remove('bg-transparent', 'border-transparent', 'text-stone-400');
+                targetButton.classList.add('bg-stone-800', 'border-stone-700', 'text-[#fabd2f]');
+            }
+        }
+    </script>
 </body>
 </html>
